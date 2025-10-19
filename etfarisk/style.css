@@ -94,7 +94,7 @@ body {
   background-color: var(--background-light);
 }
 
-.solutions-preview h3 {
+.solutions-preview h2 {
   color: var(--primary-color);
   font-size: 2em;
   margin-bottom: 10px;
@@ -205,6 +205,8 @@ body {
   font-style: normal;
 }
 
+/* -------------------- ÇÖZÜMLER ÖNİZLEME STİLLERİ -------------------- */
+
 .cozumler-main {
   padding: 20px 5%;
   max-width: 1200px;
@@ -212,10 +214,12 @@ body {
 }
 
 .page-intro {
-  background-color: #fff;
+  background-color: var(--secondary-color);
+  color: #ffffff;
   padding: 30px;
-  border-left: 5px solid var(--primary-color);
-  margin-bottom: 40px;
+  /*border-left: 5px solid var(--primary-color);
+  border-right: 5px solid var(--primary-color);*/
+  margin-bottom: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -223,7 +227,7 @@ body {
   margin-bottom: 50px;
 }
 
-.detail-section h3 {
+.detail-section h2 {
   color: var(--secondary-color);
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 5px;
@@ -241,10 +245,7 @@ body {
   justify-content: center; /* Kartları ortalamak için (bazı tarayıcılarda gereklidir) */
 }
 
-/* Eski flex kuralı olan 'flex: 1 1 300px;' kuralını solution-card'dan kaldırabiliriz, 
-   zira grid bunu halledecektir. */
 .solution-card {
-  /* flex: 1 1 300px;  <-- BU SATIRI SİLİN */
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -325,8 +326,8 @@ body {
   flex: 1 1 300px;
 }
 
-.contact-form h3,
-.contact-info-area h3 {
+.contact-form h2,
+.contact-info-area h2 {
   color: var(--secondary-color);
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 5px;
