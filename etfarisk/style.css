@@ -142,12 +142,27 @@ body {
 }
 
 /* -------------------- SENARYO PAKETLERİ GRID STİLLERİ (DÜZELTİLMİŞ) -------------------- */
+/* -------------------- YATAY KAYDIRMA İÇİN GÜNCELLENMİŞ KONTEYNER STİLİ -------------------- */
+/* -------------------- YATAY KAYDIRMA İÇİN GÜNCELLENMİŞ KONTEYNER STİLİ -------------------- */
+.table-container {
+  /* Ana sayfadaki içeriğin sağ-sol boşluklarını korumak için */
+  width: 90%; /* Üstteki tablo gibi genişliğin %90'ını kaplasın */
+  max-width: 1000px; /* Üstteki tablo gibi maksimum 1000px genişlikte kalsın */
+  margin: 36px auto; /* Ortalamayı ve dikey boşluğu garantiler */
+
+  overflow-x: auto; /* Mobil kaydırma */
+  padding-bottom: 20px;
+  box-sizing: border-box; /* padding'in max-width'i bozmasını engeller */
+}
+
+/* comparison-grid kuralı bu değişiklikten etkilenmemeli, yine de kontrol edelim: */
 .comparison-grid {
   display: grid;
-  /* 5 kolon: Özellik adı (2 birim genişlik) ve 4 paket kolonu (her biri 1 birim genişlik) */
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
-  max-width: 1400px;
-  margin: 36px auto;
+  max-width: none;
+  width: 1000px; /* Veya istediğiniz bir başlangıç genişliği */
+  min-width: 800px;
+  margin: 0; /* İçerideki gridin margin almasını engeller */
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
