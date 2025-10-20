@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="main-header">
-      <div class="logo">
-        <h1>ETFA</h1>
-      </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="cozumler.html">Çözümler</a></li>
-          <li><a href="iletisim.html">İletişim</a></li>
-        </ul>
-      </nav>
-    </header>
+
+<header class="main-header">
+  <div class="logo">
+    <h1>ETFA</h1>
+  </div>
+  <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menü">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="main-nav" id="mainNav">
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="cozumler.html">Çözümler</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+</header>
 
     <section class="hero-section">
       <div class="hero-content">
@@ -209,5 +215,46 @@
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
     </script>
+
+    <script>
+  // Otomatik yıl güncellemesi için basit JS
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+
+  // Mobil Menü Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  
+  // Overlay oluştur
+  const overlay = document.createElement('div');
+  overlay.className = 'menu-overlay';
+  document.body.appendChild(overlay);
+
+  menuToggle.addEventListener('click', function() {
+    menuToggle.classList.toggle('active');
+    mainNav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Overlay'e tıklanınca menüyü kapat
+  overlay.addEventListener('click', function() {
+    menuToggle.classList.remove('active');
+    mainNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  // Menü linklerine tıklanınca menüyü kapat
+  const menuLinks = mainNav.querySelectorAll('a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('active');
+      mainNav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
   </body>
 </html>
