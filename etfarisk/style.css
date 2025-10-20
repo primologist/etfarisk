@@ -1,5 +1,5 @@
-haklısınız,işte**style.css**dosyasının tam hali: ```css
-  /* ==================== MODERN RESET & BASE ==================== */ * {
+/* ==================== MODERN RESET & BASE ==================== */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
