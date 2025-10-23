@@ -123,15 +123,58 @@ p {
   width: 80%;
 }
 
-/* Mobile Menu Toggle */
+/* ==================== HAMBURGER MENU BUTTON ==================== */
 .mobile-menu-toggle {
   display: none;
-  background: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
   border: none;
-  font-size: 1.8rem;
-  color: var(--background-light);
   cursor: pointer;
+  padding: 0;
   z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 30px;
+  height: 3px;
+  background-color: var(--background-light);
+  border-radius: 3px;
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==================== MOBILE OVERLAY ==================== */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+  display: block;
+  opacity: 1;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -333,7 +376,24 @@ p {
   margin-top: 0.5rem;
 }
 
-/* ==================== COMPARISON GRID ==================== */
+/* Hardware table column widths */
+.hardware-table th:nth-child(1),
+.hardware-table td:nth-child(1) {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.hardware-table th:nth-child(2),
+.hardware-table td:nth-child(2) {
+  width: 30%;
+}
+
+.hardware-table th:nth-child(3),
+.hardware-table td:nth-child(3) {
+  width: auto;
+}
+
+/* ==================== COMPARISON GRID (KOMPAKT) ==================== */
 .scenario-packages {
   margin: 4rem 0;
   padding: 3rem 0;
@@ -362,7 +422,7 @@ p {
 
 .comparison-grid {
   display: grid;
-  grid-template-columns: 2fr repeat(5, 1fr);
+  grid-template-columns: auto repeat(5, 1fr);
   min-width: 900px;
   margin: 0 auto;
   border-radius: 12px;
@@ -372,7 +432,7 @@ p {
 }
 
 .comparison-grid > div {
-  padding: 1.2rem 1rem;
+  padding: 0.8rem 0.6rem;
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   display: flex;
@@ -380,7 +440,7 @@ p {
   justify-content: center;
   text-align: center;
   transition: var(--transition);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .comparison-grid > div:nth-child(6n) {
@@ -393,6 +453,8 @@ p {
   font-weight: 600;
   color: var(--text-dark);
   background-color: var(--background-gray);
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
 }
 
 .comparison-grid .header {
@@ -403,8 +465,8 @@ p {
   );
   color: var(--background-light);
   font-weight: 700;
-  font-size: 1rem;
-  padding: 1.5rem 1rem;
+  font-size: 0.95rem;
+  padding: 1rem 0.6rem;
 }
 
 .comparison-grid .feature-name.header {
@@ -414,21 +476,21 @@ p {
 
 .comparison-grid .check {
   color: var(--success-color);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
 .comparison-grid .cross {
   color: var(--text-gray);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   opacity: 0.4;
 }
 
 .comparison-grid .footer {
   background-color: var(--primary-light);
   font-style: italic;
-  font-size: 0.9rem;
-  padding: 1.5rem 1rem;
+  font-size: 0.85rem;
+  padding: 1rem 0.6rem;
 }
 
 .comparison-grid .feature-name.footer {
@@ -725,180 +787,12 @@ p {
 /* Tablet */
 @media (max-width: 1024px) {
   .comparison-grid {
-    grid-template-columns: 1.5fr repeat(5, 1fr);
-    font-size: 0.85rem;
+    grid-template-columns: auto repeat(5, 0.9fr);
+    font-size: 0.82rem;
   }
 
   .comparison-grid > div {
-    padding: 1rem 0.5rem;
-  }
-
-  .area-solution-cards {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .main-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: var(--primary-color);
-    box-shadow: var(--shadow-xl);
-    transition: right 0.3s ease;
-    padding: 5rem 2rem 2rem;
-    z-index: 999;
-  }
-
-  .main-nav.active {
-    right: 0;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .main-nav li {
-    margin: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 1rem;
-  }
-
-  .hero-section {
-    padding: 2rem 5%;
-  }
-
-  .solutions-preview,
-  .detail-section {
-    padding: 2rem 5%;
-  }
-
-  .area-solution-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-
-  .comparison-grid {
-    min-width: 800px;
-  }
-
-  .hardware-table th,
-  .hardware-table td {
-    padding: 0.8rem 0.5rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-header {
-    padding: 0.8rem 5%;
-  }
-
-  .logo h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .hero-section p {
-    font-size: 0.95rem;
-  }
-
-  .cta-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .hardware-table th,
-  .hardware-table td {
-    padding: 0.6rem 0.4rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* ==================== HAMBURGER MENU BUTTON ==================== */
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.mobile-menu-toggle span {
-  width: 30px;
-  height: 3px;
-  background-color: var(--background-light);
-  border-radius: 3px;
-  transition: var(--transition);
-  transform-origin: center;
-}
-
-.mobile-menu-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.mobile-menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* ==================== MOBILE OVERLAY ==================== */
-.menu-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.menu-overlay.active {
-  display: block;
-  opacity: 1;
-}
-
-/* ==================== RESPONSIVE DESIGN UPDATES ==================== */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .comparison-grid {
-    grid-template-columns: 1.5fr repeat(5, 1fr);
-    font-size: 0.85rem;
-  }
-
-  .comparison-grid > div {
-    padding: 1rem 0.5rem;
+    padding: 0.7rem 0.4rem;
   }
 
   .area-solution-cards {
@@ -991,6 +885,11 @@ p {
     padding: 0.8rem 0.5rem;
     font-size: 0.9rem;
   }
+
+  .hardware-table th:nth-child(1),
+  .hardware-table td:nth-child(1) {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1025,3 +924,4 @@ p {
     font-size: 0.85rem;
   }
 }
+/* End of style.css */
