@@ -266,7 +266,7 @@ p {
 .detail-section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 5rem) 5%;
+  padding: clamp(3rem, 8vw, 3rem) 5%;
 }
 
 .solutions-preview {
