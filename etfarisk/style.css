@@ -559,6 +559,11 @@ p {
   background-color: var(--background-light);
 }
 
+/* İlk section sonrasındakiler için daha az üst boşluk */
+.detail-section + .detail-section {
+  padding-top: 0rem;
+}
+
 .detail-section h2 {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
