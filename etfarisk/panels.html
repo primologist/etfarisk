@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yangın Alarm Panelleri - Teknik Rehber</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="main-header">
+      <div class="logo">
+        <h1>ETFA</h1>
+      </div>
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="cozumler.html">Çözümler</a></li>
+          <li><a href="panels.html">Kontrol Panelleri</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ==================== PAGE INTRO ==================== -->
+    <section class="page-intro">
+      <h1>Yangın Alarm Panelleri: Sistem Beyni</h1>
+      <p>
+        Yangın alarm paneli, tüm algılama sensörlerini yöneten, alarm kararını
+        veren ve diğer sistemleri (siren, söndürme, tahliye) devreye sokan
+        merkezi kontrolördür. Doğru panel seçimi, sistem güvenilirliği ve
+        işletme maliyetleri açısından kritiktir.
+      </p>
+    </section>
+
+    <!-- ==================== QUICK NAVIGATION ==================== -->
+    <section
+      class="detail-section"
+      style="padding-top: 2rem; padding-bottom: 1rem"
+    >
+      <div
+        style="
+          background: var(--background-gray);
+          padding: 1.5rem;
+          border-radius: 12px;
+          text-align: center;
+        "
+      >
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem">
+          Hızlı Erişim
+        </h4>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+          "
+        >
+          <a
+            href="#panel-types"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Panel Tipleri</a
+          >
+          <a
+            href="#functions"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Temel İşlevler</a
+          >
+          <a
+            href="#comparison"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Teknik Karşılaştırma</a
+          >
+          <a
+            href="#brands"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Marka/Model</a
+          >
+          <a
+            href="#selection"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Seçim Matrisi</a
+          >
+          <a
+            href="#standards"
+            style="
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 600;
+              padding: 0.5rem 1rem;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+            "
+            >Standartlar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 1. PANEL TİPLERİ ==================== -->
+    <section id="panel-types" class="detail-section">
+      <h2>1. Panel Tipleri ve Özellikleri</h2>
+
+      <p>
+        Yangın alarm panelleri, sensör yönetim teknolojilerine göre 4 ana
+        kategoriye ayrılır. Her tip, farklı kapasite, maliyet ve detay
+        seviyesinde bilgi sağlar.
+      </p>
+
+      <div class="hardware-table">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width: 20%">Panel Tipi</th>
+              <th style="width: 35%">Çalışma Prensibi</th>
+              <th style="width: 25%">Avantajları</th>
+              <th style="width: 20%">Dezavantajları</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Konvansiyonel</strong><br />(Geleneksel)</td>
+              <td>
+                Sensörler bölge (zone) bazında gruplandırılır. Panel sadece
+                "hangi bölgede" alarm olduğunu bildirir. Örnek: "2. Kat Doğu
+                Bölge" gibi.
+              </td>
+              <td>
+                • Düşük maliyet<br />
+                • Basit kurulum<br />
+                • Küçük projeler için ideal
+              </td>
+              <td>
+                • Hassas yer bildirimi yok<br />
+                • Geniş alanlarda yetersiz<br />
+                • Detaylı log tutmaz
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Adresli</strong><br />(Addressable)</td>
+              <td>
+                Her sensöre özel bir adres numarası verilir. Panel tam olarak
+                "hangi sensörde" alarm olduğunu gösterir. Örnek: "2. Kat Koridor
+                - Sensör #247".
+              </td>
+              <td>
+                • Kesin yer bildirimi<br />
+                • Orta/büyük projeler için uygun<br />
+                • Kablo tasarrufu (loop yapısı)
+              </td>
+              <td>
+                • Konvansiyonelden daha pahalı<br />
+                • Sensör seviye bilgisi kısıtlı
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Analog-Adresli</strong><br />(Intelligent)</td>
+              <td>
+                Adresli sistemin gelişmişi. Sensör sadece alarm vermez, anlık
+                duman/ısı seviyesini de raporlar. Panel, erken uyarı ve kirlilik
+                takibi yapabilir.
+              </td>
+              <td>
+                • Erken uyarı (pre-alarm)<br />
+                • Sensör bakım bildirimi<br />
+                • Yanlış alarm azaltma<br />
+                • Detaylı log ve analiz
+              </td>
+              <td>
+                • En yüksek maliyet<br />
+                • Programlama karmaşık<br />
+                • Kalifiye personel gerektirir
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Kablosuz</strong><br />(Wireless)</td>
+              <td>
+                Sensörler RF (radyo frekans) ile panele bağlanır. Kablo çekimi
+                yapılamayan (tarihi bina, geçici yapı) veya zor alanlarda
+                kullanılır.
+              </td>
+              <td>
+                • Kablo maliyeti yok<br />
+                • Hızlı kurulum<br />
+                • Estetik görünüm<br />
+                • Tarihi yapılara uygun<br />
+                • 5 yıla kadar pil ömrü
+              </td>
+              <td>
+                • Pil değişimi gerekir<br />
+                • RF sinyal girişimi riski<br />
+                • Yüksek donanım maliyeti<br />
+                • Büyük projeler için sınırlı
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-block warning-bg" style="margin-top: 2rem">
+        <h4>⚠️ Önemli Not: Hibrit Çözümler</h4>
+        <p>
+          Modern paneller genellikle <strong>hibrit</strong> yapıdadır: Aynı
+          panel hem adresli hem konvansiyonel sensörleri destekleyebilir. Bu,
+          mevcut eski sisteme ekleme yapılırken veya bütçe sınırlamasında
+          esneklik sağlar. Ancak en verimli çözüm, tüm sistemi tek teknolojide
+          tutmaktır.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 2. TEMEL İŞLEVLER ==================== -->
+    <section id="functions" class="detail-section">
+      <h2>2. Yangın Panelinin Temel İşlevleri</h2>
+
+      <p>
+        Panel, sadece alarm vermekle kalmaz; sistem yönetimi, test, kayıt ve
+        kullanıcı erişim kontrolü gibi hayati görevleri de yerine getirir.
+      </p>
+
+      <div class="hardware-table">
+        <h4>Panel Fonksiyonları ve Kullanım Alanları</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width: 25%">Fonksiyon</th>
+              <th style="width: 40%">Ne İşe Yarar?</th>
+              <th style="width: 35%">Kullanım Örneği</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Alarm Yönetimi</strong></td>
+              <td>
+                Sensörlerden gelen sinyalleri değerlendirir, yangın tespit
+                algoritması çalıştırır, alarm kararı verir ve
+                sirenleri/söndürmeyi tetikler.
+              </td>
+              <td>
+                Duman sensörü alarmda → Panel 30 saniye doğrulama yapar → İkinci
+                sensör de alarm verirse yangın onaylanır → Siren çalar +
+                Söndürme aktive olur.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Alarm Susturma (Silence)</strong></td>
+              <td>
+                Yanlış alarm veya kontrol altındaki durumda sirenleri geçici
+                olarak susturur. Ama panel alarm modunda kalır, sistem aktif
+                izlemeye devam eder.
+              </td>
+              <td>
+                Mutfakta pişirme dumanı → Siren çaldı → Yetkili kişi "Silence"
+                tuşuna basar → Siren kesilir ama panel alarm modunda izlemeye
+                devam eder.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sistem Reset</strong></td>
+              <td>
+                Alarm durumunu tamamen sıfırlar. Sirenleri kapatır, söndürme
+                sinyalini keser, tüm sistemi normal moda döndürür.
+              </td>
+              <td>
+                Yangın kontrol altına alındı → Yetkili "Reset" tuşuna basar →
+                Sistem normal moda döner, sensörler yeniden izlemeye başlar.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Test Modu</strong></td>
+              <td>
+                Sensörlerin, sirenlerin ve diğer bileşenlerin çalışır durumda
+                olup olmadığını manuel veya otomatik test eder. Gerçek alarm
+                oluşturmaz.
+              </td>
+              <td>
+                Aylık bakım → Test modu aktif → Her sensöre test sinyali
+                gönderilir → Çalışmayanlar raporlanır → Normal moda dönülür.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Disable/Isolate<br />(Devre Dışı Bırakma)</strong>
+              </td>
+              <td>
+                Bakım, tadilat veya yanlış alarm veren sensör/bölgeyi geçici
+                olarak devre dışı bırakır. Sistem geri kalanında çalışmaya devam
+                eder.
+              </td>
+              <td>
+                Bir odada boya çalışması var → O bölge 4 saat devre dışı
+                bırakılır → Çalışma bitince tekrar aktif edilir.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Event Log<br />(Olay Kaydı)</strong>
+              </td>
+              <td>
+                Tüm sistem olaylarını (alarm, arıza, test, kullanıcı işlemleri)
+                tarih/saat ile kaydeder. Yasal yükümlülük ve soruşturma için
+                kritik.
+              </td>
+              <td>
+                Yangın sonrası → Müfettiş log kayıtlarını inceler → "Saat
+                14:23'te Sensör #34 alarm verdi, 14:24'te operatör susturdu"
+                detayları görülür.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Kullanıcı Seviyeleri<br />(User Levels)</strong>
+              </td>
+              <td>
+                Farklı yetki seviyeleri tanımlar. Operatör sadece susturabilir,
+                teknisyen ayar yapabilir, yönetici tüm sistemi kontrol edebilir.
+              </td>
+              <td>
+                Güvenlik görevlisi → Sadece "Silence" ve "Reset" yetkisi var<br />
+                Teknik ekip → Sensör izolasyonu ve test yapabilir<br />
+                Yönetici → Tüm ayarları değiştirebilir
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Arıza İzleme</strong></td>
+              <td>
+                Sensör arızası, kablo kesintisi, güç kaybı, batarya düşük seviye
+                gibi sistem hatalarını tespit eder ve uyarır.
+              </td>
+              <td>
+                3. kattaki sensör bağlantısı koptu → Panel "Arıza" LED'i yanar +
+                Ekranda "Loop 2, Adres #156 bağlantı hatası" mesajı görünür.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Entegrasyon<br />(BMS, SCADA)</strong>
+              </td>
+              <td>
+                Panel, bina otomasyon sistemi (BMS), SCADA veya uzaktan izleme
+                yazılımı ile haberleşir. Merkezi kontrol imkanı sağlar.
+              </td>
+              <td>
+                AVM merkezi kontrol odası → Tüm yangın panellerinin durumunu tek
+                ekrandan izler. Alarm olduğunda otomatik SMS/e-mail bildirimi.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== 3. TEKNİK KARŞILAŞTIRMA ==================== -->
+    <section id="comparison" class="detail-section">
+      <h2>3. Panel Tipleri Teknik Karşılaştırma Tablosu</h2>
+
+      <p>
+        Kapasite, performans ve maliyet kriterleri üzerinden detaylı
+        karşılaştırma:
+      </p>
+
+      <div class="hardware-table">
+        <table class="comparison-table panel-comparison">
+          <thead>
+            <tr>
+              <th>Özellik</th>
+              <th>Konvansiyonel</th>
+              <th>Adresli</th>
+              <th>Analog-Adresli</th>
+              <th>Kablosuz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Max Kapasite</strong></td>
+              <td>8-32 bölge<br />(Her bölge 10-20 sensör)</td>
+              <td>128-400 adres</td>
+              <td>200-500 adres</td>
+              <td>50-200 cihaz</td>
+            </tr>
+            <tr>
+              <td><strong>Lokasyon Hassasiyeti</strong></td>
+              <td>Bölge seviyesi<br />("2. Kat Doğu")</td>
+              <td>Sensör seviyesi<br />("Oda 204, Dedektör #47")</td>
+              <td>Sensör seviyesi<br />("Oda 204, Dedektör #47")</td>
+              <td>Sensör seviyesi<br />(RF ID ile)</td>
+            </tr>
+            <tr>
+              <td><strong>Algılama Hızı</strong></td>
+              <td>2-5 saniye</td>
+              <td>2-4 saniye</td>
+              <td>1-3 saniye<br />(Pre-alarm özelliği)</td>
+              <td>3-7 saniye<br />(RF iletim gecikmesi)</td>
+            </tr>
+            <tr>
+              <td><strong>Yanlış Alarm Önleme</strong></td>
+              <td>Yok<br />(Manuel ayar gerekir)</td>
+              <td>Kısmi<br />(Çift sensör doğrulama)</td>
+              <td>Gelişmiş<br />(Analog seviye analizi)</td>
+              <td>Orta<br />(Çift sensör + RF doğrulama)</td>
+            </tr>
+            <tr>
+              <td><strong>Sensör Bakım İzleme</strong></td>
+              <td>Yok</td>
+              <td>Kısıtlı<br />(Arıza tespiti var)</td>
+              <td>Tam<br />(Kirlilik seviyesi, hassasiyet düşüşü)</td>
+              <td>Var<br />(Pil seviyesi, sinyal gücü)</td>
+            </tr>
+            <tr>
+              <td><strong>Kablolama Karmaşıklığı</strong></td>
+              <td>Yüksek<br />(Her bölge ayrı kablo)</td>
+              <td>Düşük<br />(Loop yapısı, tek kablo)</td>
+              <td>Düşük<br />(Loop yapısı)</td>
+              <td>Yok<br />(Kablosuz)</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Kurulum Süresi<br />(100 sensör bina)</strong>
+              </td>
+              <td>5-7 gün</td>
+              <td>3-5 gün</td>
+              <td>4-6 gün<br />(Programlama dahil)</td>
+              <td>1-2 gün<br />(Kablo yok)</td>
+            </tr>
+            <tr>
+              <td><strong>Yazılım Entegrasyonu</strong></td>
+              <td>Çok kısıtlı</td>
+              <td>Orta<br />(Modbus, RS485)</td>
+              <td>Tam<br />(BACnet, OPC, Web API)</td>
+              <td>Tam<br />(Cloud tabanlı)</td>
+            </tr>
+            <tr>
+              <td><strong>Event Log Kapasitesi</strong></td>
+              <td>500-2000 olay</td>
+              <td>5000-20000 olay</td>
+              <td>50000+ olay<br />(HDD/SSD ile sınırsız)</td>
+              <td>Cloud sınırsız</td>
+            </tr>
+            <tr>
+              <td><strong>Bakım Gereksinimi</strong></td>
+              <td>Yıllık manuel test</td>
+              <td>6 ayda bir otomatik test</td>
+              <td>Sistem kendi izler<br />(Otomatik bakım uyarısı)</td>
+              <td>Pil değişimi (2-5 yıl)<br />+ Otomatik test</td>
+            </tr>
+            <tr style="background-color: var(--primary-light)">
+              <td>
+                <strong>Tahmini Maliyet<br />(Panel + 100 Sensör)</strong>
+              </td>
+              <td>40.000 - 70.000 ₺</td>
+              <td>80.000 - 150.000 ₺</td>
+              <td>150.000 - 300.000 ₺</td>
+              <td>120.000 - 250.000 ₺</td>
+            </tr>
+            <tr style="background-color: var(--background-gray)">
+              <td><strong>Uygun Proje Tipi</strong></td>
+              <td>Küçük ofis, depo,<br />konut (< 3000 m²)</td>
+              <td>Ofis, okul, hastane,<br />AVM (3000-15000 m²)</td>
+              <td>Fabrika, havalimanı,<br />veri merkezi (> 15000 m²)</td>
+              <td>Tarihi bina, müze,<br />geçici yapı, tadilat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== 4. MARKA VE MODEL ÖRNEKLERİ ==================== -->
+    <section id="brands" class="detail-section">
+      <h2>4. Pazar Lideri Marka ve Model Örnekleri</h2>
+
+      <p>
+        Türkiye pazarında en yaygın kullanılan, sertifikalı ve güvenilir panel
+        markaları. Fiyatlar 2024 Q4 bayii satış fiyatları üzerinden ortalama
+        değerlerdir.
+      </p>
+
+      <!-- KONVANSİYONEL PANELLER -->
+      <div class="hardware-table">
+        <h4>Konvansiyonel Paneller</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Öne Çıkan Özellikler</th>
+              <th>Kapasite</th>
+              <th>Fiyat (₺)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hochiki</strong></td>
+              <td>FPA-1000</td>
+              <td>Kompakt tasarım, Türkçe menü, 4 zone genişletilebilir</td>
+              <td>4-16 bölge</td>
+              <td>8.000 - 12.000</td>
+            </tr>
+            <tr>
+              <td><strong>Siemens</strong></td>
+              <td>FC2020</td>
+              <td>Modüler yapı, relay çıkışları, EN 54-2/4 onaylı</td>
+              <td>8-20 bölge</td>
+              <td>10.000 - 15.000</td>
+            </tr>
+            <tr>
+              <td><strong>Honeywell</strong></td>
+              <td>XLS140</td>
+              <td>Kolay programlama, grafik LCD, 140 zone desteği</td>
+              <td>4-32 bölge</td>
+              <td>9.000 - 14.000</td>
+            </tr>
+            <tr>
+              <td><strong>Nittan</strong></td>
+              <td>Evolution-4</td>
+              <td>Ekonomik, küçük işletmeler için ideal, basit kurulum</td>
+              <td>4-8 bölge</td>
+              <td>6.000 - 9.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ADRESLİ PANELLER -->
+      <div class="hardware-table" style="margin-top: 2rem">
+        <h4>Adresli (Addressable) Paneller</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Öne Çıkan Özellikler</th>
+              <th>Kapasite</th>
+              <th>Fiyat (₺)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Esser by Honeywell</strong></td>
+              <td>IQ8Control M</td>
+              <td>
+                <strong>Lider yapı:</strong> 8 loop, modüler genişleme, EN 54
+                tam uyumlu, sesli tahliye entegrasyonu, BACnet/Modbus desteği
+              </td>
+              <td>1000+ adres<br />(8 loop)</td>
+              <td>70.000 - 110.000</td>
+            </tr>
+            <tr>
+              <td><strong>Hochiki</strong></td>
+              <td>HCP-5000</td>
+              <td>
+                Grafik ekran, net ağ entegrasyonu, VESDA uyumlu, TCP/IP iletişim
+              </td>
+              <td>250 adres<br />(loop başına)</td>
+              <td>45.000 - 65.000</td>
+            </tr>
+            <tr>
+              <td><strong>Siemens</strong></td>
+              <td>Cerberus PRO FC4020</td>
+              <td>
+                Endüstri standardı, açık protokol, yüksek güvenilirlik, kompleks
+                proje desteği
+              </td>
+              <td>254 adres<br />(loop başına)</td>
+              <td>50.000 - 75.000</td>
+            </tr>
+            <tr>
+              <td><strong>Honeywell</strong></td>
+              <td>NOTIFIER NFS2-640</td>
+              <td>
+                Geniş kapasite, çoklu loop, yazılım entegrasyonu, hastane/AVM
+                projeleri için
+              </td>
+              <td>636 adres<br />(multi-loop)</td>
+              <td>55.000 - 85.000</td>
+            </tr>
+            <tr>
+              <td><strong>Notifier</strong></td>
+              <td>IDS 3-128</td>
+              <td>
+                Orta segment, kompakt, kolay programlama, ofis ve okul projeleri
+                için
+              </td>
+              <td>128 adres</td>
+              <td>35.000 - 50.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ANALOG-ADRESLİ PANELLER -->
+      <div class="hardware-table" style="margin-top: 2rem">
+        <h4>Analog-Adresli (Intelligent) Paneller</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Öne Çıkan Özellikler</th>
+              <th>Kapasite</th>
+              <th>Fiyat (₺)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Esser by Honeywell</strong></td>
+              <td>FlexES Control</td>
+              <td>
+                <strong>Lider yapı:</strong> Analog seviye izleme, erken uyarı
+                algoritması, otomatik sensör kalibrasyonu, VESDA/ASD
+                entegrasyonu
+              </td>
+              <td>500 adres<br />(genişletilebilir)</td>
+              <td>90.000 - 140.000</td>
+            </tr>
+            <tr>
+              <td><strong>Hochiki</strong></td>
+              <td>ESP500L</td>
+              <td>
+                Yüksek hassasiyet, kir kompansasyonu, loop izolasyon modülleri,
+                fabrika projeleri için ideal
+              </td>
+              <td>400+ adres</td>
+              <td>75.000 - 120.000</td>
+            </tr>
+            <tr>
+              <td><strong>Siemens</strong></td>
+              <td>SYMARO FC730</td>
+              <td>
+                Endüstriyel seviye, SCADA entegrasyonu, 7/24 kritik altyapı
+                desteği, redundant loop yapısı
+              </td>
+              <td>500 adres</td>
+              <td>85.000 - 130.000</td>
+            </tr>
+            <tr>
+              <td><strong>Notifier</strong></td>
+              <td>ONYX Series NFS-320</td>
+              <td>
+                Analog algılama, pre-alarm, bakım uyarısı, veri merkezi ve clean
+                room uygulamaları
+              </td>
+              <td>318 adres</td>
+              <td>65.000 - 100.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KABLOSUZ PANELLER -->
+      <div class="hardware-table" style="margin-top: 2rem">
+        <h4>Kablosuz (Wireless) Paneller</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Öne Çıkan Özellikler</th>
+              <th>Kapasite</th>
+              <th>Fiyat (₺)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Honeywell</strong></td>
+              <td>XLS Wireless Series</td>
+              <td>
+                <strong>5 yıl pil garantisi,</strong> mesh network, kablolu
+                hibrit desteği, kolay montaj, tarihi bina projeleri için ideal
+              </td>
+              <td>150 cihaz</td>
+              <td>55.000 - 90.000</td>
+            </tr>
+            <tr>
+              <td><strong>Hochiki</strong></td>
+              <td>Hybrinet Plus</td>
+              <td>
+                Kablolu + kablosuz hibrit, mesh ağı, güvenli RF protokolü,
+                genişleme esnekliği
+              </td>
+              <td>200 düğüm</td>
+              <td>60.000 - 95.000</td>
+            </tr>
+            <tr>
+              <td><strong>Notifier</strong></td>
+              <td>SWIFT Wireless</td>
+              <td>
+                Hızlı kurulum, cloud izleme, IP tabanlı iletişim, geçici yapı ve
+                etkinlik alanları için
+              </td>
+              <td>100 cihaz</td>
+              <td>45.000 - 75.000</td>
+            </tr>
+            <tr>
+              <td><strong>Siemens</strong></td>
+              <td>Sinteso FS720 Wireless</td>
+              <td>
+                Endüstriyel RF, güvenli şifreli iletişim, batarya izleme,
+                fabrika ve lojistik alanlar
+              </td>
+              <td>120 cihaz</td>
+              <td>50.000 - 80.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-block success-bg" style="margin-top: 2rem">
+        <h4>💡 Honeywell Esser Serisinin Öne Çıkan Avantajları</h4>
+        <p>
+          <strong>Esser by Honeywell</strong> serisi, Avrupa pazarında lider
+          konumda olup, Türkiye'de özellikle büyük ölçekli projeler (hastane,
+          AVM, endüstriyel tesis) için tercih edilmektedir.
+          <strong>IQ8Control M</strong> modeli, 8 loop kapasitesi, modüler
+          genişleme ve tam entegrasyon desteği ile
+          <strong>"kurumsal sınıf"</strong> çözümler sunar. Ayrıca
+          <strong>XLS Wireless serisi</strong>, 5 yıl pil garantisi ile bakım
+          maliyetlerini önemli ölçüde düşürür.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 5. SEÇİM MATRİSİ ==================== -->
+    <section id="selection" class="detail-section">
+      <h2>5. Panel Seçim Matrisi: Proje Tipi Bazında</h2>
+
+      <p>
+        Bina tipi, büyüklük, risk seviyesi ve bütçe kısıtlarına göre en uygun
+        panel tipini belirlemek için karar matrisi:
+      </p>
+
+      <div class="hardware-table">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Proje Tipi</th>
+              <th>Alan (m²)</th>
+              <th>Önerilen Panel</th>
+              <th>Gerekçe</th>
+              <th>Örnek Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Küçük Ofis / İşyeri</strong></td>
+              <td>50 - 500</td>
+              <td>Konvansiyonel<br />(4-8 bölge)</td>
+              <td>Düşük maliyet yeterli, bölge tespiti yeterli, basit yapı</td>
+              <td>Nittan Evolution-4<br />Honeywell XLS140</td>
+            </tr>
+            <tr>
+              <td><strong>Apartman / Rezidans</strong></td>
+              <td>500 - 2000</td>
+              <td>Konvansiyonel veya<br />Adresli (küçük)</td>
+              <td>Kat bazlı izolasyon, maliyet-performans dengesi</td>
+              <td>Hochiki FPA-1000<br />Notifier IDS 3-128</td>
+            </tr>
+            <tr>
+              <td><strong>Okul / Kreş</strong></td>
+              <td>1000 - 5000</td>
+              <td>Adresli<br />(128-250 adres)</td>
+              <td>Kesin lokasyon kritik (çocuk güvenliği), hızlı müdahale</td>
+              <td>Honeywell NFS2-640<br />Hochiki HCP-5000</td>
+            </tr>
+            <tr>
+              <td><strong>Hastane</strong></td>
+              <td>5000 - 20000</td>
+              <td>Analog-Adresli<br />(multi-loop)</td>
+              <td>
+                Yanlış alarm kabul edilemez, erken uyarı şart, hassas alanlar
+                (ameliyathane, yoğun bakım)
+              </td>
+              <td>Esser IQ8Control M<br />Siemens Cerberus PRO</td>
+            </tr>
+            <tr>
+              <td><strong>AVM / Alışveriş Merkezi</strong></td>
+              <td>10000 - 50000</td>
+              <td>Analog-Adresli<br />(çoklu loop)</td>
+              <td>
+                Yüksek insan yoğunluğu, sesli tahliye entegrasyonu, merkezi
+                kontrol
+              </td>
+              <td>Esser FlexES Control<br />Hochiki ESP500L</td>
+            </tr>
+            <tr>
+              <td><strong>Fabrika / Endüstri</strong></td>
+              <td>5000 - 100000</td>
+              <td>Analog-Adresli +<br />VESDA/ASD</td>
+              <td>
+                Toz, buhar, kimyasal risk, geniş açık alanlar, erken tespit
+                kritik
+              </td>
+              <td>Siemens SYMARO FC730<br />Notifier ONYX NFS-320</td>
+            </tr>
+            <tr>
+              <td><strong>Veri Merkezi / Server Odası</strong></td>
+              <td>100 - 2000</td>
+              <td>Analog-Adresli +<br />Hava Örneklemeli</td>
+              <td>
+                Çok erken tespit (dumanın görülmesi bile geç olabilir), hassas
+                ekipman koruması
+              </td>
+              <td>VESDA VLS/VLC<br />+ Esser/Hochiki panel</td>
+            </tr>
+            <tr>
+              <td><strong>Otel</strong></td>
+              <td>3000 - 20000</td>
+              <td>Adresli veya<br />Analog-Adresli</td>
+              <td>
+                Oda bazlı tespit, sessiz alarm (misafir rahatsız edilmemeli),
+                otomatik tahliye
+              </td>
+              <td>Honeywell NFS2-640<br />Hochiki HCP-5000</td>
+            </tr>
+            <tr>
+              <td><strong>Tarihi Bina / Müze</strong></td>
+              <td>500 - 10000</td>
+              <td>Kablosuz<br />(Wireless)</td>
+              <td>
+                Kablo çekimi restorasyon gerektirir, estetik bozulması kabul
+                edilemez
+              </td>
+              <td>Honeywell XLS Wireless<br />Hochiki Hybrinet Plus</td>
+            </tr>
+            <tr>
+              <td><strong>Lojistik Depo / Antrepo</strong></td>
+              <td>10000 - 100000</td>
+              <td>Adresli +<br />Beam (Işın) Dedektör</td>
+              <td>
+                Yüksek tavan (6-20m), geniş açık alanlar, hızlı yayılma riski
+              </td>
+              <td>Notifier NFS-320<br />+ Beam dedektör sistemi</td>
+            </tr>
+            <tr>
+              <td><strong>Havalimanı / Terminal</strong></td>
+              <td>50000+</td>
+              <td>Analog-Adresli +<br />Merkezi Yazılım</td>
+              <td>
+                Kritik altyapı, 7/24 çalışma, çoklu bölge yönetimi, SCADA
+                entegrasyonu
+              </td>
+              <td>Esser IQ8Control M<br />Siemens SYMARO</td>
+            </tr>
+            <tr>
+              <td><strong>Geçici Yapı / Etkinlik Alanı</strong></td>
+              <td>500 - 5000</td>
+              <td>Kablosuz<br />(Kiralık sistem)</td>
+              <td>Hızlı kurulum/sökme, geçici kullanım, kablo altyapısı yok</td>
+              <td>Notifier SWIFT<br />Siemens FS720 Wireless</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== 6. YASAL STANDARTLAR ==================== -->
+    <section id="standards" class="detail-section">
+      <h2>6. Yasal Standartlar ve Sertifikasyon Gereksinimleri</h2>
+
+      <p>
+        Türkiye'de ve Avrupa'da yangın alarm panelleri, belirli standartlara
+        uygun olarak üretilmeli ve sertifikalandırılmalıdır. Sertifikasız panel
+        kullanımı yasal değildir ve sigorta kapsamı dışında kalır.
+      </p>
+
+      <div class="hardware-table standards-table">
+        <h4>EN 54 Serisi - Yangın Algılama ve İkaz Sistemleri Standartları</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Standart Kodu</th>
+              <th>Kapsam</th>
+              <th>Temel Gereksinimler</th>
+              <th>Zorunlu mu?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EN 54-2</strong></td>
+              <td>
+                Kontrol ve gösterge panelleri - Yangın alarm panelinin temel
+                teknik özellikleri ve performans kriterleri
+              </td>
+              <td>
+                • Minimum 2 bağımsız alarm girişi<br />
+                • Sesli/görsel alarm çıkışı<br />
+                • Arıza gösterimi<br />
+                • Kullanıcı seviyeli erişim
+              </td>
+              <td class="check" style="text-align: center">✔ ZORUNLU</td>
+            </tr>
+            <tr>
+              <td><strong>EN 54-4</strong></td>
+              <td>
+                Güç kaynağı ekipmanları - Panel besleme, yedek güç (UPS/batarya)
+                ve elektrik güvenliği
+              </td>
+              <td>
+                • Min 24 saat yedek güç<br />
+                • Düşük voltaj uyarısı<br />
+                • Otomatik şarj sistemi<br />
+                • Güç kesintisi toleransı
+              </td>
+              <td class="check" style="text-align: center">✔ ZORUNLU</td>
+            </tr>
+            <tr>
+              <td><strong>EN 54-13</strong></td>
+              <td>
+                Alarm doğrulama ve gecikme - Yanlış alarm önleme mekanizmaları
+              </td>
+              <td>
+                • Çift sensör onay<br />
+                • Zaman gecikmesi (30-120 sn)<br />
+                • Manuel/otomatik reset<br />
+                • Pre-alarm seviyesi
+              </td>
+              <td style="text-align: center">Tavsiye edilen</td>
+            </tr>
+            <tr>
+              <td><strong>EN 54-16</strong></td>
+              <td>
+                Sesli alarm cihazları - Yangın alarm sireni/hoparlör
+                entegrasyonu
+              </td>
+              <td>
+                • Min 65 dB ses seviyesi<br />
+                • Frekans standardı (500-2500 Hz)<br />
+                • Zone bazlı kontrol<br />
+                • Sesli tahliye uyumluluğu
+              </td>
+              <td class="check" style="text-align: center">✔ ZORUNLU</td>
+            </tr>
+            <tr>
+              <td><strong>EN 54-17</strong></td>
+              <td>
+                Hava örneklemeli dedektörler (VESDA/ASD) - Panel entegrasyon
+                şartları
+              </td>
+              <td>
+                • Analog sinyal girişi<br />
+                • Sensitivite seviyesi ayarı<br />
+                • Sistem arıza bildirimi<br />
+                • Çoklu alarm seviyesi
+              </td>
+              <td style="text-align: center">VESDA kullanımında zorunlu</td>
+            </tr>
+            <tr>
+              <td><strong>EN 54-21</strong></td>
+              <td>
+                İletim yolu sistemleri (Loop) - Sensör-panel arası iletişim
+                hatları
+              </td>
+              <td>
+                • Kısa devre koruması<br />
+                • Kesinti izolasyonu<br />
+                • Hat empedans kontrolü<br />
+                • Redundant hat seçeneği
+              </td>
+              <td style="text-align: center">Adresli panellerde zorunlu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hardware-table standards-table" style="margin-top: 2rem">
+        <h4>Türkiye Özel Standartlar ve Belgeler</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Belge/Standart</th>
+              <th>İçerik</th>
+              <th>Nereden Alınır?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TSE Belgesi</strong><br />(TS EN 54 serisi)</td>
+              <td>
+                Türk Standardları Enstitüsü tarafından verilen uygunluk belgesi.
+                Tüm yangın panelleri TSE belgeli olmalıdır.
+              </td>
+              <td>
+                • TSE (Türk Standardları Enstitüsü)<br />
+                • Üretici/ithalatçı başvurusu<br />
+                • Laboratuvar testleri<br />
+                • Yıllık yenileme
+              </td>
+            </tr>
+            <tr>
+              <td><strong>CE Belgesi</strong></td>
+              <td>
+                Avrupa Birliği uygunluk işareti. Türkiye'de ithal edilen
+                panellerde CE + DoC (Uygunluk Beyanı) zorunludur.
+              </td>
+              <td>
+                • Üretici firma tarafından verilir<br />
+                • Notified Body onayı<br />
+                • CPR (Construction Products Regulation)
+              </td>
+            </tr>
+            <tr>
+              <td><strong>İtfaiye Onayı</strong></td>
+              <td>
+                Proje tamamlandıktan sonra yerel itfaiye tarafından sistem testi
+                yapılır ve "Yangın Güvenlik Onay Belgesi" verilir.
+              </td>
+              <td>
+                • İl İtfaiye Müdürlüğü<br />
+                • Bina ruhsatı için zorunlu<br />
+                • Yıllık periyodik kontrol
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Yapı Denetim Onayı</strong></td>
+              <td>
+                Yeni yapılarda yangın projesinin mimari projeye uygunluğu yapı
+                denetim firması tarafından onaylanır.
+              </td>
+              <td>
+                • Yapı Denetim Şirketi<br />
+                • Proje aşamasında<br />
+                • İnşaat ruhsatı için gerekli
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sigorta Şirketi Raporu</strong></td>
+              <td>
+                Yangın sigortası için sigorta şirketi risk değerlendirmesi yapar
+                ve sistem yeterliliğini onaylar.
+              </td>
+              <td>
+                • Sigorta şirketi risk mühendisi<br />
+                • Prim hesaplaması için<br />
+                • Opsiyonel ama tavsiye edilir
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning" style="margin-top: 2rem">
+        <h4>⚠️ Kritik Uyarı: Sertifikasız Panel Kullanımı</h4>
+        <p>
+          TSE belgesi olmayan veya süresi dolmuş yangın paneli kullanmak
+          <strong>yasal suçtur</strong>
+          ve şu sonuçlara yol açar:
+        </p>
+        <ul>
+          <li><strong>İdari para cezası:</strong> 50.000 - 200.000 ₺ arası</li>
+          <li>
+            <strong>Sigorta geçersizliği:</strong> Yangın durumunda hiçbir
+            tazminat ödenmez
+          </li>
+          <li>
+            <strong>Cezai sorumluluk:</strong> Can kaybı durumunda hapis cezası
+          </li>
+          <li>
+            <strong>İşletme kapatma:</strong> İtfaiye tarafından faaliyet
+            durdurma
+          </li>
+        </ul>
+        <p
+          style="margin-top: 1rem; font-weight: 600; color: var(--primary-dark)"
+        >
+          Mutlaka TSE belgeli, süresi geçerli ürünler kullanın ve yıllık
+          kontrolleri aksatmayın!
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 7. KURULUM VE BAKIM ==================== -->
+    <section class="detail-section">
+      <h2>7. Panel Kurulum ve Periyodik Bakım Rehberi</h2>
+
+      <p>
+        Doğru kurulum ve düzenli bakım, sistemin güvenilir çalışması için hayati
+        önem taşır. Aşağıdaki tablolar, sektör standartlarına uygun prosedürleri
+        özetlemektedir.
+      </p>
+
+      <div class="hardware-table standards-table">
+        <h4>Kurulum Aşamaları ve Kontrol Noktaları</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aşama</th>
+              <th>Yapılacak İşlemler</th>
+              <th>Kontrol Kriterleri</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Yerleşim Planı</strong></td>
+              <td>
+                Panel konumu belirleme, ekran görüş açısı, erişilebilirlik,
+                nem/toz koruması değerlendirmesi
+              </td>
+              <td>
+                ✓ Giriş katı veya güvenlik odası<br />
+                ✓ 24/7 görünür ve ulaşılabilir<br />
+                ✓ Nem/toz oranı düşük alan<br />
+                ✓ Yangın/su riskinden uzak
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2. Elektrik Altyapısı</strong></td>
+              <td>
+                230V AC devre, topraklama, UPS bağlantısı, yedek batarya
+                kurulumu, elektrik panosu etiketleme
+              </td>
+              <td>
+                ✓ Ayrı sigorta (min 16A)<br />
+                ✓ UPS destekli (min 1000VA)<br />
+                ✓ Topraklama direnci &lt; 10Ω<br />
+                ✓ Batarya kapasitesi EN 54-4 uygun
+              </td>
+            </tr>
+            <tr>
+              <td><strong>3. Kablolama</strong></td>
+              <td>
+                Loop kablo döşeme (NYCY veya AYY), kablo yolları işaretleme,
+                topraklama, EMI koruması
+              </td>
+              <td>
+                ✓ Kablo kesiti uygun (min 1.5mm²)<br />
+                ✓ Yangına dayanıklı kablo kullan<br />
+                ✓ Max loop uzunluğu kontrol<br />
+                ✓ Kablo yolu etiketleme
+              </td>
+            </tr>
+            <tr>
+              <td><strong>4. Sensör Bağlantısı</strong></td>
+              <td>
+                Sensör adresleme, loop bağlantısı, test, izolasyon modülleri
+                kurulumu, son direnç takma
+              </td>
+              <td>
+                ✓ Her sensör benzersiz adres<br />
+                ✓ Loop direnci kontrol<br />
+                ✓ Kısa devre/açık devre testi<br />
+                ✓ İzolasyon modülü stratejik yerlerde
+              </td>
+            </tr>
+            <tr>
+              <td><strong>5. Yazılım Programlama</strong></td>
+              <td>
+                Sensör tanımlama (adres + lokasyon), alarm mantığı, kullanıcı
+                seviyeleri, entegrasyon ayarları
+              </td>
+              <td>
+                ✓ Tüm sensörler tanımlı<br />
+                ✓ Zone/alan mantığı doğru<br />
+                ✓ Kullanıcı yetkileri atandı<br />
+                ✓ BMS/SCADA entegre edildi
+              </td>
+            </tr>
+            <tr>
+              <td><strong>6. Test ve Devreye Alma</strong></td>
+              <td>
+                Sistem testi (tüm sensörler), siren testi, söndürme entegrasyon
+                testi, yedek güç testi, log kayıt kontrolü
+              </td>
+              <td>
+                ✓ Tüm sensörler alarm veriyor<br />
+                ✓ Sirenler çalışıyor<br />
+                ✓ Söndürme tetikleniyor<br />
+                ✓ Batarya 24 saat dayanıyor<br />
+                ✓ Log doğru kaydediyor
+              </td>
+            </tr>
+            <tr>
+              <td><strong>7. Teslim ve Eğitim</strong></td>
+              <td>
+                Kullanıcı eğitimi, manuel teslim, itfaiye koordinasyonu, bakım
+                sözleşmesi imzalama
+              </td>
+              <td>
+                ✓ En az 2 kişi eğitildi<br />
+                ✓ Manuel Türkçe verildi<br />
+                ✓ İtfaiye bilgilendirildi<br />
+                ✓ Bakım sözleşmesi yapıldı
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hardware-table standards-table" style="margin-top: 2rem">
+        <h4>Periyodik Bakım Programı</h4>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Periyot</th>
+              <th>Yapılacak Kontroller</th>
+              <th>Sorumlu</th>
+              <th>Yasal Zorunluluk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Haftalık</strong></td>
+              <td>
+                • Görsel kontrol (LED'ler, ekran)<br />
+                • Alarm/arıza uyarısı kontrolü<br />
+                • Log hızlı tarama
+              </td>
+              <td>Bina yöneticisi /<br />Güvenlik sorumlusu</td>
+              <td>Tavsiye edilen</td>
+            </tr>
+            <tr>
+              <td><strong>Aylık</strong></td>
+              <td>
+                • Test modu aktivasyonu<br />
+                • Batarya voltaj ölçümü<br />
+                • Sensör temizlik kontrolü<br />
+                • Log detaylı inceleme
+              </td>
+              <td>Bina teknik ekibi</td>
+              <td>Tavsiye edilen</td>
+            </tr>
+            <tr>
+              <td><strong>3 Aylık</strong></td>
+              <td>
+                • Tüm sensörlerin tetikleme testi<br />
+                • Siren ses seviyesi ölçümü<br />
+                • Loop empedans testi<br />
+                • Yazılım güncelleme kontrolü
+              </td>
+              <td>Yetkili servis</td>
+              <td>Tavsiye edilen</td>
+            </tr>
+            <tr>
+              <td><strong>6 Aylık</strong></td>
+              <td>
+                • Batarya yük testi<br />
+                • Tüm kablo bağlantıları sıkma<br />
+                • İzolasyon modülü kontrolü<br />
+                • BMS entegrasyon testi
+              </td>
+              <td>Yetkili servis</td>
+              <td class="check" style="text-align: center">
+                ✔ ZORUNLU<br />(Sigorta şartı)
+              </td>
+            </tr>
+            <tr style="background-color: var(--primary-light)">
+              <td><strong>Yıllık</strong></td>
+              <td>
+                • Tam sistem kalibrasyonu<br />
+                • Tüm sensör temizlik/değişim<br />
+                • Batarya değişimi (gerekirse)<br />
+                • Sertifika yenileme<br />
+                • İtfaiye denetimi hazırlığı
+              </td>
+              <td>Yetkili servis +<br />Üretici temsilcisi</td>
+              <td class="check" style="text-align: center">
+                ✔ ZORUNLU<br />(İtfaiye denetimi)
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2 Yılda Bir</strong></td>
+              <td>
+                • Panel yazılım güncelleme<br />
+                • Donanım komponent değişimi (fan, röle)<br />
+                • Elektrik panosu revizyonu
+              </td>
+              <td>Üretici yetkili servisi</td>
+              <td>Tavsiye edilen</td>
+            </tr>
+            <tr>
+              <td><strong>5 Yılda Bir</strong></td>
+              <td>
+                • Tam sistem yenileme değerlendirmesi<br />
+                • Batarya grubu değişimi<br />
+                • Teknoloji güncelleme incelemesi
+              </td>
+              <td>Proje mühendisi +<br />Yetkili servis</td>
+              <td>Tavsiye edilen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-block success-bg" style="margin-top: 2rem">
+        <h4>💡 Bakım Maliyeti Optimizasyonu</h4>
+        <p>
+          <strong>Analog-adresli paneller</strong> otomatik sensör kirlilik
+          tespiti sayesinde gereksiz bakım maliyetlerini %30-40 azaltır.
+          <strong>Honeywell XLS Wireless</strong>
+          gibi 5 yıl pil garantili sistemler ise bakım periyotlarını uzatarak
+          işletme maliyetlerini düşürür. Yıllık bakım sözleşmesi yaparak hem
+          yasal yükümlülüğü karşılayın hem de ani arıza durumlarında hızlı
+          destek alın.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== CTA BÖLÜMÜ ==================== -->
+    <section
+      class="detail-section"
+      style="background-color: var(--primary-light); padding: 3rem 5%"
+    >
+      <h2 style="color: var(--primary-dark); text-align: center">
+        Projeniz İçin Doğru Panel Seçimi
+      </h2>
+      <p
+        style="
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+        "
+      >
+        Bina özellikleri, risk analizi ve bütçe ile uyumlu panel seçimi için
+        uzman görüşü alın. <br />
+        Honeywell yetkili bayii olarak bize ulaşabilirsiniz.
+      </p>
+      <div style="text-align: center">
+        <a href="iletisim.html" class="cta-button"
+          >Keşif ve Teklif İçin İletişim</a
+        >
+      </div>
+    </section>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="main-footer">
+      <p>
+        &copy; <span id="current-year"></span> ETFA - Honeywell Esser Yetkili
+        Bayii. Tüm Hakları Saklıdır.
+      </p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+      // Otomatik yıl güncellemesi
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      // Mobil Menü Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      const overlay = document.createElement("div");
+      overlay.className = "menu-overlay";
+      document.body.appendChild(overlay);
+
+      menuToggle.addEventListener("click", function () {
+        menuToggle.classList.toggle("active");
+        mainNav.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = mainNav.classList.contains("active")
+          ? "hidden"
+          : "";
+      });
+
+      overlay.addEventListener("click", function () {
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      const menuLinks = mainNav.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          menuToggle.classList.remove("active");
+          mainNav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+
+      // Smooth scroll for quick navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

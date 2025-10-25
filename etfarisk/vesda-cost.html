@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VESDA Maliyet Karşılaştırması - Dahili Doküman</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="vesda.css" />
+    <style>
+      /* Sayfa özel stiller */
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .internal-badge {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .cost-table {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .cost-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .cost-table th {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        color: white;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .cost-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .cost-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .cost-table tbody tr:hover {
+        background-color: #f9fafb;
+      }
+
+      .cost-table .scenario-header {
+        background: #fef3c7;
+        font-weight: 700;
+        color: #92400e;
+      }
+
+      .cost-table .total-row {
+        background: #fee2e2;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .cost-table .advantage-row {
+        background: #d1fae5;
+        font-weight: 600;
+        color: #065f46;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .highlight-green {
+        color: #059669;
+        font-weight: 700;
+      }
+
+      .highlight-red {
+        color: #dc2626;
+        font-weight: 700;
+      }
+
+      .note-box {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+
+      .note-box h4 {
+        color: #92400e;
+        margin-top: 0;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .comparison-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #cc0000;
+      }
+
+      .comparison-card h4 {
+        color: #cc0000;
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+
+      .comparison-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .comparison-card li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f3f4f6;
+      }
+
+      .comparison-card li:last-child {
+        border-bottom: none;
+      }
+
+      .price-tag {
+        background: #1f2937;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-weight: 700;
+        display: inline-block;
+        font-size: 0.95rem;
+      }
+
+      .print-button {
+        background: #059669;
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+        margin: 1rem 0;
+      }
+
+      .print-button:hover {
+        background: #047857;
+      }
+
+      @media print {
+        .print-button,
+        .main-header,
+        .main-footer {
+          display: none;
+        }
+      }
+
+      /* ==================== HIZLI ERİŞİM İNDEKSİ ==================== */
+
+      .quick-nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .quick-nav-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+
+      .quick-nav-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.2rem;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+        align-items: center;
+        text-decoration: none;
+        color: #1f2937;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid transparent;
+      }
+
+      .quick-nav-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border-left-color: #cc0000;
+      }
+
+      .quick-nav-card.priority {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border-left-color: #f59e0b;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+      }
+
+      .quick-nav-card.priority:hover {
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        transform: translateY(-5px) scale(1.02);
+      }
+
+      .nav-icon {
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .nav-content h4 {
+        margin: 0 0 0.3rem 0;
+        color: #1f2937;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .nav-content p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+        line-height: 1.4;
+      }
+
+      .nav-arrow {
+        font-size: 1.5rem;
+        color: #cc0000;
+        font-weight: bold;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .quick-nav-card:hover .nav-arrow {
+        opacity: 1;
+        transform: translateX(5px);
+      }
+
+      /* Smooth scroll için */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Scroll target vurgulama */
+      section:target {
+        animation: highlight-section 1.5s ease;
+      }
+
+      @keyframes highlight-section {
+        0% {
+          background-color: rgba(245, 158, 11, 0.2);
+        }
+        100% {
+          background-color: transparent;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .quick-nav-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-nav-card {
+          padding: 1rem;
+        }
+
+        .nav-icon {
+          font-size: 1.5rem;
+        }
+
+        .nav-content h4 {
+          font-size: 0.9rem;
+        }
+
+        .nav-content p {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* Quick navigation için boşluk */
+      .quick-nav-section {
+        margin-bottom: 0 !important; /* Default margin'i sıfırla */
+        padding-bottom: 2rem; /* Koyu alan içi boşluk */
+      }
+
+      /* Scenario section'larına üstten boşluk */
+      #scenario1,
+      #scenario2,
+      #scenario3 {
+        margin-top: 3rem; /* Açık zemin görünsün */
+      }
+
+      /* Responsive için mobile'da */
+      @media (max-width: 768px) {
+        .quick-nav-section {
+          padding-bottom: 1.5rem;
+        }
+
+        #scenario1,
+        #scenario2,
+        #scenario3 {
+          margin-top: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo">
+        <h1>ETFA</h1>
+      </div>
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menü">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="cozumler.html">Çözümler</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="page-intro">
+      <span class="internal-badge">🔒 Dahili Doküman - Ekip Kullanımı</span>
+      <h1>VESDA vs Normal Sensör: Maliyet Analizi</h1>
+      <p>
+        Hava örneklemeli sistemlerin (VESDA) maliyetini geleneksel sensörlerle
+        karşılaştıran detaylı analiz. Tüm fiyatlar Euro (€) bazında verilmiştir.
+      </p>
+    </section>
+
+    <!-- HIZLI ERİŞİM İNDEKSİ -->
+    <section
+      class="detail-section"
+      style="
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        padding: 2rem 5%;
+      "
+    >
+      <section
+        class="detail-section quick-nav-section"
+        style="
+          background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+          padding: 1.5rem 5%;
+        "
+      >
+        <div class="quick-nav-container">
+          <h3
+            style="
+              color: white;
+              text-align: center;
+              margin-bottom: 1.5rem;
+              font-size: 1.3rem;
+            "
+          >
+            📑 Hızlı Erişim Menüsü
+          </h3>
+
+          <div class="quick-nav-grid">
+            <a href="#tco-10year" class="quick-nav-card priority">
+              <div class="nav-icon">🎯</div>
+              <div class="nav-content">
+                <h4>10 Yıllık TCO Analizi</h4>
+                <p>Toplam sahip olma maliyeti karşılaştırması</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#scenario1" class="quick-nav-card">
+              <div class="nav-icon">📊</div>
+              <div class="nav-content">
+                <h4>Küçük Server Odası</h4>
+                <p>50-100m² alan için maliyet analizi</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#scenario2" class="quick-nav-card">
+              <div class="nav-icon">🏢</div>
+              <div class="nav-content">
+                <h4>Orta Ölçek Veri Merkezi</h4>
+                <p>200-500m² alan için detaylı maliyet</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#scenario3" class="quick-nav-card">
+              <div class="nav-icon">🏭</div>
+              <div class="nav-content">
+                <h4>Yüksek Tavan Hangar</h4>
+                <p>12m+ tavan için sistem karşılaştırması</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#extra-costs" class="quick-nav-card">
+              <div class="nav-icon">💶</div>
+              <div class="nav-content">
+                <h4>Ek Maliyet Faktörleri</h4>
+                <p>Marka fiyatları, bakım, sigorta indirimleri</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#decision-matrix" class="quick-nav-card">
+              <div class="nav-icon">⚖️</div>
+              <div class="nav-content">
+                <h4>Karar Verme Matrisi</h4>
+                <p>VESDA ne zaman tercih edilmeli?</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+
+            <a href="#presentation-tips" class="quick-nav-card">
+              <div class="nav-icon">🎤</div>
+              <div class="nav-content">
+                <h4>Müşteri Sunum İpuçları</h4>
+                <p>Satış argümanları ve karşı cevaplar</p>
+              </div>
+              <div class="nav-arrow">→</div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- SENARYO 1: KÜÇÜK SERVER ODASI -->
+    <section class="detail-section" id="scenario1">
+      <div class="cost-table">
+        <h3 style="padding: 1rem; margin: 0; background: #1f2937; color: white">
+          📊 Senaryo 1: Küçük Server Odası (50-100m²)
+        </h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40%">Kalem</th>
+              <th class="text-center">Geleneksel Sistem</th>
+              <th class="text-center">VESDA Sistemi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sensör/Ünite Sayısı</strong></td>
+              <td class="text-center">4-6 adet duman sensörü</td>
+              <td class="text-center">1 adet VESDA LaserPlus</td>
+            </tr>
+            <tr>
+              <td>Sensör/Ünite Maliyeti</td>
+              <td class="text-right"><span class="price-tag">€ 600</span></td>
+              <td class="text-right"><span class="price-tag">€ 8.000</span></td>
+            </tr>
+            <tr>
+              <td>Boru Sistemi (m bazında)</td>
+              <td class="text-right">-</td>
+              <td class="text-right"><span class="price-tag">€ 800</span></td>
+            </tr>
+            <tr>
+              <td>Kablolama & Malzeme</td>
+              <td class="text-right"><span class="price-tag">€ 400</span></td>
+              <td class="text-right"><span class="price-tag">€ 600</span></td>
+            </tr>
+            <tr>
+              <td>İşçilik (Kurulum)</td>
+              <td class="text-right"><span class="price-tag">€ 600</span></td>
+              <td class="text-right"><span class="price-tag">€ 1.500</span></td>
+            </tr>
+            <tr>
+              <td>Devreye Alma & Test</td>
+              <td class="text-right"><span class="price-tag">€ 200</span></td>
+              <td class="text-right"><span class="price-tag">€ 500</span></td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>TOPLAM İLK YATIRIM</strong></td>
+              <td class="text-center"><strong>€ 1.800</strong></td>
+              <td class="text-center"><strong>€ 11.400</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Yıllık Bakım Maliyeti</strong></td>
+              <td class="text-right"><span class="price-tag">€ 150</span></td>
+              <td class="text-right"><span class="price-tag">€ 400</span></td>
+            </tr>
+            <tr class="advantage-row">
+              <td colspan="3">
+                <strong>✅ VESDA Avantajı:</strong> 30-60 dakika erken uyarı |
+                Hassas algılama (ön kuvvetli tespit) | 10+ yıl ömür | Yanlış
+                alarm yok | Kritik veri kaybı önlenir
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SENARYO 2: ORTA ÖLÇEK SERVER ODASI -->
+    <section class="detail-section" id="scenario2">
+      <div class="cost-table">
+        <h3 style="padding: 1rem; margin: 0; background: #1f2937; color: white">
+          📊 Senaryo 2: Orta Ölçek Server / Veri Merkezi (200-500m²)
+        </h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40%">Kalem</th>
+              <th class="text-center">Geleneksel Sistem</th>
+              <th class="text-center">VESDA Sistemi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sensör/Ünite Sayısı</strong></td>
+              <td class="text-center">12-15 adet duman sensörü</td>
+              <td class="text-center">2-3 adet VESDA</td>
+            </tr>
+            <tr>
+              <td>Sensör/Ünite Maliyeti</td>
+              <td class="text-right"><span class="price-tag">€ 1.800</span></td>
+              <td class="text-right">
+                <span class="price-tag">€ 20.000</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Boru Sistemi</td>
+              <td class="text-right">-</td>
+              <td class="text-right"><span class="price-tag">€ 3.500</span></td>
+            </tr>
+            <tr>
+              <td>Kablolama & Malzeme</td>
+              <td class="text-right"><span class="price-tag">€ 1.200</span></td>
+              <td class="text-right"><span class="price-tag">€ 1.500</span></td>
+            </tr>
+            <tr>
+              <td>İşçilik (Kurulum)</td>
+              <td class="text-right"><span class="price-tag">€ 1.500</span></td>
+              <td class="text-right"><span class="price-tag">€ 3.500</span></td>
+            </tr>
+            <tr>
+              <td>Devreye Alma & Test</td>
+              <td class="text-right"><span class="price-tag">€ 400</span></td>
+              <td class="text-right"><span class="price-tag">€ 1.000</span></td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>TOPLAM İLK YATIRIM</strong></td>
+              <td class="text-center"><strong>€ 4.900</strong></td>
+              <td class="text-center"><strong>€ 29.500</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Yıllık Bakım Maliyeti</strong></td>
+              <td class="text-right"><span class="price-tag">€ 300</span></td>
+              <td class="text-right"><span class="price-tag">€ 800</span></td>
+            </tr>
+            <tr class="advantage-row">
+              <td colspan="3">
+                <strong>💰 ROI Hesabı:</strong> Bir veri merkezi yangını
+                ortalama <span class="highlight-red">€ 500K - 5M</span> zarara
+                neden olur. VESDA'nın ekstra
+                <span class="highlight-red">€ 24.600</span> maliyeti, tek bir
+                olayda kendini amorti eder.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SENARYO 3: YÜKSEK TAVAN HANGAR -->
+    <section class="detail-section" id="scenario3">
+      <div class="cost-table">
+        <h3 style="padding: 1rem; margin: 0; background: #1f2937; color: white">
+          📊 Senaryo 3: Yüksek Tavanlı Alan - Hangar/Depo (12m+ / 1000m²)
+        </h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40%">Kalem</th>
+              <th class="text-center">Geleneksel Sistem</th>
+              <th class="text-center">VESDA Sistemi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="scenario-header">
+              <td colspan="3">
+                <strong>⚠️ Not:</strong> 12m üzeri tavanda normal duman sensörü
+                etkisizdir. Alternatif: Alev sensörü veya VESDA
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sistem Tipi</strong></td>
+              <td class="text-center">Alev Sensörü (UV/IR)</td>
+              <td class="text-center">VESDA LaserScanner</td>
+            </tr>
+            <tr>
+              <td>Sensör/Ünite Sayısı</td>
+              <td class="text-center">8-12 adet alev sensörü</td>
+              <td class="text-center">4-5 adet VESDA</td>
+            </tr>
+            <tr>
+              <td>Sensör/Ünite Maliyeti</td>
+              <td class="text-right">
+                <span class="price-tag">€ 12.000</span>
+              </td>
+              <td class="text-right">
+                <span class="price-tag">€ 32.000</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Boru Sistemi</td>
+              <td class="text-right">-</td>
+              <td class="text-right"><span class="price-tag">€ 8.000</span></td>
+            </tr>
+            <tr>
+              <td>Kablolama & Montaj</td>
+              <td class="text-right"><span class="price-tag">€ 3.000</span></td>
+              <td class="text-right"><span class="price-tag">€ 4.000</span></td>
+            </tr>
+            <tr>
+              <td>İşçilik (Kurulum)</td>
+              <td class="text-right"><span class="price-tag">€ 3.500</span></td>
+              <td class="text-right"><span class="price-tag">€ 6.000</span></td>
+            </tr>
+            <tr>
+              <td>Kalibrasyon & Test</td>
+              <td class="text-right"><span class="price-tag">€ 800</span></td>
+              <td class="text-right"><span class="price-tag">€ 1.500</span></td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>TOPLAM İLK YATIRIM</strong></td>
+              <td class="text-center"><strong>€ 19.300</strong></td>
+              <td class="text-center"><strong>€ 51.500</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Yıllık Bakım Maliyeti</strong></td>
+              <td class="text-right"><span class="price-tag">€ 600</span></td>
+              <td class="text-right"><span class="price-tag">€ 1.200</span></td>
+            </tr>
+            <tr class="advantage-row">
+              <td colspan="3">
+                <strong>🔥 Alev Sensörü:</strong> Sadece açık alev tespit eder
+                (geç) | <strong>💨 VESDA:</strong> Yanma öncesi dumanı algılar
+                (çok erken) - 30-60 dk avantaj
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EK BİLGİLER -->
+    <section
+      class="detail-section"
+      id="extra-costs"
+      style="background-color: var(--background-light)"
+    >
+      <h2>Ek Maliyet Faktörleri</h2>
+
+      <div
+        class="note-box"
+        style="background: #e0f2fe; border-left-color: #0284c7"
+      >
+        <h4 style="color: #075985">ℹ️ Önemli Not</h4>
+        <p style="margin: 0; color: #0c4a6e">
+          Aşağıdaki tüm fiyatlar <strong>2024 Q1</strong> itibariyle ortalama
+          distributor fiyatlarıdır. Proje bazlı, miktar ve tedarikçiye göre
+          değişiklik gösterebilir.
+        </p>
+      </div>
+
+      <!-- VESDA MARKA FİYATLARI -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        💶 VESDA Marka/Model Fiyatları
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Marka & Model</th>
+              <th class="text-center">Fiyat Aralığı</th>
+              <th>Özellik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Xtralis VESDA VLP</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 6.500 - 8.500</span>
+              </td>
+              <td>Yüksek performans, geniş alan</td>
+            </tr>
+            <tr>
+              <td><strong>Xtralis VESDA VLC</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 4.000 - 6.000</span>
+              </td>
+              <td>Kompakt, küçük alanlar</td>
+            </tr>
+            <tr>
+              <td><strong>Siemens ASA</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 7.000 - 9.000</span>
+              </td>
+              <td>Alman teknolojisi, yüksek güvenilirlik</td>
+            </tr>
+            <tr>
+              <td><strong>Bosch AVIOTEC</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 15.000 - 20.000</span>
+              </td>
+              <td>Video + duman analizi (AI destekli)</td>
+            </tr>
+            <tr>
+              <td><strong>Panasonic LASERS</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 8.000 - 10.000</span>
+              </td>
+              <td>Japon teknolojisi, hassas algılama</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BAKIM MALİYETLERİ -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        🔧 Bakım Maliyetleri (Yıllık)
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Ekipman Tipi</th>
+              <th class="text-center">Yıllık Bakım Maliyeti</th>
+              <th>Periyot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Normal Sensör</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 10-15 / adet</span>
+              </td>
+              <td>Yılda 1-2 test + temizlik</td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Ünitesi</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 300-500 / ünite</span>
+              </td>
+              <td>Yılda 1 tam servis</td>
+            </tr>
+            <tr>
+              <td><strong>Alev Sensörü</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 50-80 / adet</span>
+              </td>
+              <td>Yılda 1 kalibrasyon</td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Hava Filtresi</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 80-120</span>
+              </td>
+              <td>Yılda 1 değişim</td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Lazer Temizliği</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 150-200</span>
+              </td>
+              <td>Gerektiğinde (2-3 yılda 1)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KURULUM SÜRELERİ -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        ⏱️ Kurulum Süreleri
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Sistem Tipi</th>
+              <th class="text-center">Kurulum Süresi</th>
+              <th>Açıklama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Normal Sensör</strong></td>
+              <td class="text-center">1-2 gün</td>
+              <td>Küçük alan için (50-100m²)</td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Sistemi</strong></td>
+              <td class="text-center">3-7 gün</td>
+              <td>Boru tasarımı + kurulum + test</td>
+            </tr>
+            <tr>
+              <td><strong>Alev Sensörü</strong></td>
+              <td class="text-center">2-4 gün</td>
+              <td>Yönlendirme ve kalibrasyon kritik</td>
+            </tr>
+            <tr>
+              <td><strong>Test & Komisyon</strong></td>
+              <td class="text-center">+1-2 gün</td>
+              <td>Tüm sistemler için eklenir</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- YANLIŞ ALARM MALİYETİ -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        📉 Yanlış Alarm Maliyeti
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Olay Tipi</th>
+              <th class="text-center">Maliyet</th>
+              <th>Açıklama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>İtfaiye Çağrısı</strong></td>
+              <td class="text-center">
+                <span class="price-tag">€ 200-500</span>
+              </td>
+              <td>Her çağrı için ceza/ücret</td>
+            </tr>
+            <tr>
+              <td><strong>Üretim Durması</strong></td>
+              <td class="text-center">
+                <span class="price-tag highlight-red"
+                  >€ 5.000-50.000 / saat</span
+                >
+              </td>
+              <td>Fabrika/üretim hattı</td>
+            </tr>
+            <tr>
+              <td><strong>Server Kapatma</strong></td>
+              <td class="text-center">
+                <span class="price-tag highlight-red">€ 10.000+</span>
+              </td>
+              <td>Her olay için veri kaybı riski</td>
+            </tr>
+            <tr class="advantage-row">
+              <td colspan="3">
+                <strong>✅ VESDA ile Önlenen:</strong> %95+ yanlış alarm
+                azalması - Yıllık 3-10 yanlış alarm → 0-1'e düşer
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SİGORTA İNDİRİMLERİ -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        🛡️ Sigorta İndirimleri
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Sistem Tipi</th>
+              <th class="text-center">Sigorta İndirimi</th>
+              <th>Yıllık Tasarruf (Örnek)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Normal Yangın Sistemi</strong></td>
+              <td class="text-center">%5-10</td>
+              <td class="text-center">€ 1.000-3.000</td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Sistemi</strong></td>
+              <td class="text-center"><strong>%15-25</strong></td>
+              <td class="text-center"><strong>€ 3.000-8.000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>FM Onaylı Sistem</strong></td>
+              <td class="text-center">+%5-10 ek</td>
+              <td class="text-center">€ 1.000-3.000 ek</td>
+            </tr>
+            <tr style="background: #d1fae5">
+              <td colspan="3" style="padding: 1rem">
+                <strong>💡 Not:</strong> Bazı sigortacılar kritik tesisler için
+                (veri merkezi, müze) VESDA zorunluluğu getirebilir.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ENERJİ TÜKETİMİ -->
+      <h3 style="color: #cc0000; margin-top: 2rem; margin-bottom: 1rem">
+        ⚡ Enerji Tüketimi
+      </h3>
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Sistem Tipi</th>
+              <th class="text-center">Güç Tüketimi</th>
+              <th class="text-center">Yıllık Maliyet Farkı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Normal Sensör (tek)</strong></td>
+              <td class="text-center">1-2W</td>
+              <td class="text-center" rowspan="2">
+                <span class="price-tag">€ 50-150</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>VESDA Ünitesi</strong></td>
+              <td class="text-center">15-30W (sürekli çalışır)</td>
+            </tr>
+            <tr style="background: #fef3c7">
+              <td colspan="3" style="padding: 1rem">
+                <strong>💡 Not:</strong> VESDA sürekli çalışır (fan + lazer),
+                ancak büyük sistemlerde toplam maliyet farkı ihmal edilebilir
+                düzeydedir.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- KARAR MATRISI -->
+    <section
+      class="detail-section"
+      id="decision-matrix"
+      style="background-color: var(--background-gray)"
+    >
+      <h2>Karar Verme Matrisi: VESDA Ne Zaman Tercih Edilmeli?</h2>
+
+      <div class="note-box">
+        <h4>🎯 VESDA Kesinlikle Önerilir:</h4>
+        <ul style="list-style: none; padding: 0">
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Server odaları ve veri merkezleri</strong> (veri kaybı
+            riski yüksek)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Telekom santral odaları</strong> (kesintisiz hizmet
+            kritik)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Müze ve arşivler</strong> (tekrar elde edilemez eserler)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Temiz odalar (Clean Room)</strong> (kontaminasyon riski)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Yüksek tavan (12m+)</strong> (alternatif yok veya alev
+            sensörü geç kalır)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Cezaevi, psikiyatri</strong> (vandalizm riski yüksek)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ✅ <strong>Sigorta zorunluluğu</strong> (bazı poliçeler şart koşar)
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="note-box"
+        style="background: #d1fae5; border-left-color: #10b981"
+      >
+        <h4 style="color: #065f46">💡 VESDA İyi Bir Seçim:</h4>
+        <ul style="list-style: none; padding: 0">
+          <li style="padding: 0.5rem 0">
+            ⚡ <strong>Elektrik pano odaları</strong> (erken uyarı hayati)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ⚡ <strong>Kimya laboratuvarları</strong> (hassas ekipman)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ⚡ <strong>Büyük ofis binaları</strong> (prestij + güvenlik)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ⚡ <strong>Oteller (VIP katlar)</strong> (misafir güvenliği)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ⚡ <strong>Hastaneler (kritik bölümler)</strong> (hasta tahliyesi
+            zor)
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="note-box"
+        style="background: #fee2e2; border-left-color: #dc2626"
+      >
+        <h4 style="color: #991b1b">❌ VESDA Gereksiz / Aşırı Yatırım:</h4>
+        <ul style="list-style: none; padding: 0">
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Konut daireleri</strong> (normal sensör yeterli)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Küçük ofisler (<50m²)</strong> (maliyet haklı değil)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Perakende mağazalar</strong> (düşük risk)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Otopark, garaj</strong> (CO sensörü + ısı yeterli)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Depolar (standart)</strong> (kritik değilse normal
+            sensör)
+          </li>
+          <li style="padding: 0.5rem 0">
+            ❌ <strong>Bütçe kısıtlı projeler</strong> (ROI uzun vadeli)
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10 YILLIK MALİYET KARŞILAŞTIRMA -->
+    <section class="detail-section" id="tco-10year">
+      <h2>10 Yıllık Toplam Sahip Olma Maliyeti (TCO)</h2>
+      <p style="text-align: center; margin-bottom: 2rem">
+        İlk yatırım + Bakım + Operasyonel maliyetler (200m² server odası örneği)
+      </p>
+
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Maliyet Kalemi</th>
+              <th class="text-center">Geleneksel Sistem</th>
+              <th class="text-center">VESDA Sistemi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>İlk Kurulum (Yıl 0)</strong></td>
+              <td class="text-right"><span class="price-tag">€ 4.900</span></td>
+              <td class="text-right">
+                <span class="price-tag">€ 29.500</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Yıllık Bakım x 10 yıl</td>
+              <td class="text-right"><span class="price-tag">€ 3.000</span></td>
+              <td class="text-right"><span class="price-tag">€ 8.000</span></td>
+            </tr>
+            <tr>
+              <td>Sensör Değişimi (5. yıl)</td>
+              <td class="text-right"><span class="price-tag">€ 1.800</span></td>
+              <td class="text-right"><span class="price-tag">-</span></td>
+            </tr>
+            <tr>
+              <td>Yanlış Alarm Maliyetleri (ort. 5 olay/yıl)</td>
+              <td class="text-right">
+                <span class="price-tag">€ 15.000</span>
+              </td>
+              <td class="text-right"><span class="price-tag">€ 500</span></td>
+            </tr>
+            <tr>
+              <td>Sigorta Tasarrufu (10 yıl)</td>
+              <td class="text-right">
+                <span class="highlight-green">- € 5.000</span>
+              </td>
+              <td class="text-right">
+                <span class="highlight-green">- € 25.000</span>
+              </td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>10 YILLIK TOPLAM MALİYET</strong></td>
+              <td class="text-center"><strong>€ 19.700</strong></td>
+              <td class="text-center"><strong>€ 13.000</strong></td>
+            </tr>
+            <tr class="advantage-row">
+              <td colspan="3">
+                <strong>🎉 SONUÇ:</strong> 10 yılda VESDA sistemi
+                <span class="highlight-green">€ 6.700 daha ucuza</span> gelir!
+                (Yanlış alarm azalması + sigorta indirimi sayesinde)
+              </td>
+            </tr>
+            <tr style="background: #fef3c7">
+              <td colspan="3" style="padding: 1rem">
+                <strong>⚠️ Önemli:</strong> Bu hesap tek bir yangın olayını
+                içermiyor. Bir server odası yangını
+                <span class="highlight-red">€ 500.000 - 5.000.000</span> zarara
+                neden olabilir. VESDA bu riski %90+ azaltır.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MÜŞTERİYE SUNUM İPUÇLARI -->
+    <section
+      class="detail-section"
+      id="presentation-tips"
+      style="background-color: var(--background-light)"
+    >
+      <h2>🎤 Müşteriye Sunum İpuçları</h2>
+
+      <div class="comparison-grid">
+        <div class="comparison-card" style="border-top-color: #059669">
+          <h4>✅ Olumlu Argümanlar</h4>
+          <ul style="list-style: disc; padding-left: 1.5rem">
+            <li>"Yangın başlamadan 30-60 dakika önce uyarı alırsınız"</li>
+            <li>"Server verileriniz %100 korunur"</li>
+            <li>"Yanlış alarm neredeyse hiç olmaz"</li>
+            <li>"Sigorta priminde %15-25 indirim kazanırsınız"</li>
+            <li>"10 yıllık TCO daha düşüktür"</li>
+            <li>"Dünyanın en büyük veri merkezleri kullanır"</li>
+            <li>"FM/VdS onaylı, en güvenilir sistem"</li>
+          </ul>
+        </div>
+
+        <div class="comparison-card" style="border-top-color: #dc2626">
+          <h4>❌ Karşı Argümanlara Cevaplar</h4>
+          <ul style="list-style: none; padding: 0">
+            <li style="margin-bottom: 1rem">
+              <strong>💬 "Çok pahalı!"</strong><br />
+              → 10 yıllık TCO aslında daha ucuz. Bir yangın milyonlarca zarara
+              neden olur.
+            </li>
+            <li style="margin-bottom: 1rem">
+              <strong>💬 "Normal sensör yetmez mi?"</strong><br />
+              → Server odalarında normal sensör yangını ancak çok geç fark eder.
+              VESDA yanma başlamadan uyarır.
+            </li>
+            <li style="margin-bottom: 1rem">
+              <strong>💬 "Bakımı zor mu?"</strong><br />
+              → Yılda 1 kez basit bakım. Normal sensörden bile az uğraş (hepsini
+              tek noktadan kontrol).
+            </li>
+            <li style="margin-bottom: 1rem">
+              <strong>💬 "Sigortacı kabul eder mi?"</strong><br />
+              → Tam tersine, VESDA sigortacıların en çok tercih ettiği sistem.
+              Prim indirimi bile verebilirler.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜST MENÜYE DÖNÜŞ -->
+    <section
+      class="detail-section"
+      style="text-align: center; background-color: var(--background-gray)"
+    >
+      <a href="index.html" class="cta-button">← Ana Sayfaya Dön</a>
+      <a href="sensors.html" class="cta-button" style="margin-left: 1rem"
+        >Sensör Detayları →</a
+      >
+    </section>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="current-year"></span> ETFA. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      const overlay = document.createElement("div");
+      overlay.className = "menu-overlay";
+      document.body.appendChild(overlay);
+
+      menuToggle.addEventListener("click", function () {
+        menuToggle.classList.toggle("active");
+        mainNav.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = mainNav.classList.contains("active")
+          ? "hidden"
+          : "";
+      });
+
+      overlay.addEventListener("click", function () {
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      const menuLinks = mainNav.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          menuToggle.classList.remove("active");
+          mainNav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+    </script>
+  </body>
+</html>

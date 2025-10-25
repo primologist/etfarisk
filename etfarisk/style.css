@@ -929,4 +929,707 @@ p {
     font-size: 0.85rem;
   }
 }
+
+/* ==================== HARDWARE TABLE ==================== */
+.hardware-table {
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hardware-table h4 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  text-align: center;
+}
+
+.hardware-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: var(--shadow-lg);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--background-light);
+}
+
+.hardware-table th,
+.hardware-table td {
+  padding: 1.2rem;
+  text-align: left;
+}
+
+.hardware-table thead {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--background-light);
+}
+
+.hardware-table th {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.hardware-table tbody tr {
+  transition: var(--transition);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hardware-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.hardware-table .detail-trigger {
+  color: var(--text-gray);
+  font-style: italic;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Hardware table column widths */
+.hardware-table th:nth-child(1),
+.hardware-table td:nth-child(1) {
+  width: 15%;
+  white-space: nowrap;
+}
+
+.hardware-table th:nth-child(2),
+.hardware-table td:nth-child(2) {
+  width: 30%;
+}
+
+.hardware-table th:nth-child(3),
+.hardware-table td:nth-child(3) {
+  width: 55%;
+}
+
+/* ==================== TIKLANABİLİR NAVIGASYON STİLLERİ ==================== */
+
+/* Hardware tablosu tıklanabilir satırlar */
+.hardware-table .clickable-row {
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.hardware-table .clickable-row:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-light) 0%,
+    rgba(204, 0, 0, 0.1) 100%
+  );
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(204, 0, 0, 0.1);
+}
+
+.hardware-table .clickable-row:hover td:first-child {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.hardware-table .clickable-row:active {
+  transform: translateX(3px) scale(0.99);
+}
+
+/* OK İŞARETİ - SADECE İLK HÜCREYE */
+.hardware-table .clickable-row td:first-child {
+  position: relative;
+  padding-right: 2.5rem; /* Ok için yer */
+}
+
+.hardware-table .clickable-row td:first-child::after {
+  content: "→";
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: var(--transition);
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.hardware-table .clickable-row:hover td:first-child::after {
+  opacity: 1;
+}
+
+/* TOOLTIP - SADECE TABLO SATIRI İÇİN */
+.hardware-table .clickable-row {
+  position: relative;
+}
+
+/* Tooltip'i kaldıralım çünkü tabloda karışıklık yaratıyor */
+/* İsterseniz alternatif olarak mouse title attribute kullanabiliriz */
+
+/* Tıklanabilir paket başlıkları */
+.clickable-package {
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.clickable-package::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.clickable-package:hover::before {
+  left: 100%;
+}
+
+.clickable-package:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-color) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);
+}
+
+.clickable-package:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* Paket başlıkları için ok işareti */
+.clickable-package::after {
+  content: "→";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: var(--transition);
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+}
+
+.clickable-package:hover::after {
+  opacity: 1;
+  right: 8px;
+}
+
+/* Mobile responsive tıklama alanları */
+@media (max-width: 768px) {
+  .clickable-row:hover {
+    transform: none;
+    background: var(--primary-light);
+  }
+
+  .hardware-table .clickable-row td:first-child::after {
+    opacity: 1;
+    font-size: 1rem;
+  }
+
+  .clickable-package::after {
+    opacity: 1;
+    right: 8px;
+  }
+
+  .hardware-table th:nth-child(1),
+  .hardware-table td:nth-child(1) {
+    white-space: normal;
+  }
+}
+
+/* Focus states for accessibility */
+.clickable-row:focus,
+.clickable-package:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading state (opsiyonel gelecek sayfalar için) */
+.clickable-row.loading,
+.clickable-package.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ==================== SENSÖR DETAY SAYFASI STİLLERİ ==================== */
+
+/* Sensör Grid Düzeni */
+.sensor-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Detay Kartları */
+.detail-card {
+  background: var(--background-light);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  border-left: 5px solid var(--primary-color);
+}
+
+.detail-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.detail-card h3 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.card-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Info Blokları */
+.info-block {
+  background: var(--background-gray);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--border-color);
+}
+
+.info-block h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.info-block p {
+  margin-bottom: 0.8rem;
+  line-height: 1.8;
+}
+
+.info-block ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-block ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.8rem;
+  line-height: 1.7;
+}
+
+.info-block ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.info-block ul ul {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Renkli Bloklar */
+.success-bg {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left-color: var(--success-color);
+}
+
+.success-bg h4 {
+  color: #065f46;
+}
+
+.warning-bg {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left-color: var(--warning-color);
+}
+
+.warning-bg h4 {
+  color: #92400e;
+}
+
+.note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-gray);
+  margin-top: 0.5rem;
+}
+
+/* Karşılaştırma Bölümü */
+.comparison-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.comparison-card {
+  background: var(--background-light);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.comparison-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+}
+
+.comparison-header {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--background-light);
+}
+
+.comparison-header.wired {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+.comparison-header.wireless {
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+}
+
+.comparison-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.comparison-content {
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Karar Tablosu */
+.decision-table {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.decision-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--background-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.decision-table th,
+.decision-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.decision-table thead {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--background-light);
+}
+
+.decision-table th {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.decision-table tbody tr:hover {
+  background-color: var(--primary-light);
+}
+
+.decision-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* İpucu Kartları */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tip-card {
+  background: var(--background-light);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+.tip-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.tip-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.tip-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tip-card ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.7rem;
+  line-height: 1.6;
+}
+
+.tip-card ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.tip-card ul ul {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.tip-card ul ul li::before {
+  content: "•";
+  color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sensor-grid {
+    gap: 1.5rem;
+  }
+
+  .detail-card {
+    padding: 1.5rem;
+  }
+
+  .comparison-section {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .decision-table {
+    font-size: 0.85rem;
+  }
+
+  .decision-table th,
+  .decision-table td {
+    padding: 0.7rem 0.5rem;
+  }
+}
+
+/* Karşılaştırma tabloları için çizgili grid stil */
+.comparison-table table {
+  border-collapse: collapse; /* separate yerine collapse */
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #d1d5db; /* Tüm hücrelere çizgi */
+  padding: 0.7rem;
+}
+
+.comparison-table thead th {
+  border-bottom: 2px solid #9ca3af; /* Başlık daha kalın */
+}
+
+/* Alternating row colors (zebra striping) */
+.comparison-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.comparison-table tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+/* ==================== TABLO KOLON GENİŞLİKLERİ STANDARDİZASYONU ==================== */
+
+/* TÜM TABLOLARDA İLK KOLON STANDART GENİŞLİK (İLK TABLONUN İLK KOLONU REFERANS) */
+.hardware-table th:nth-child(1),
+.hardware-table td:nth-child(1),
+.comparison-table th:nth-child(1),
+.comparison-table td:nth-child(1) {
+  width: 15%; /* İlk tablonun ilk kolonuyla aynı */
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+/* ==================== 3 SÜTUNLU TABLOLAR ==================== */
+
+/* 3 sütunlu tablolarda: 1. kolon standart, 2. kolon daralt, 3. kolon genişlet */
+.hardware-table th:nth-child(2),
+.hardware-table td:nth-child(2) {
+  width: 25%; /* Eskiden 30% idi, daraltıldı */
+}
+
+.hardware-table th:nth-child(3),
+.hardware-table td:nth-child(3) {
+  width: 60%; /* Eskiden 55% idi, genişletildi */
+}
+
+/* ==================== 4 SÜTUNLU TABLOLAR ==================== */
+
+/* 4 sütunlu tablolarda: 1. kolon standart, 2. kolon daralt, 3-4. kolonlar genişlet */
+.comparison-table th:nth-child(2),
+.comparison-table td:nth-child(2) {
+  width: 30%; /* Eskiden 35% idi, daraltıldı */
+}
+
+.comparison-table th:nth-child(3),
+.comparison-table td:nth-child(3) {
+  width: 40%; /* Eskiden 30% idi, genişletildi */
+}
+
+.comparison-table th:nth-child(4),
+.comparison-table td:nth-child(4) {
+  width: 15%;
+}
+
+/* ==================== 5 SÜTUNLU TABLOLAR ==================== */
+
+/* 5 sütunlu tablolarda: 1. kolon standart, 2. kolon daralt, 3-4 orta, 5. kolon genişlet */
+/* HEM .hardware-table HEM .comparison-table için geçerli */
+
+/* İlk kolon zaten yukarıda tanımlı (15%) */
+
+.hardware-table thead tr th:nth-child(2),
+.hardware-table tbody tr td:nth-child(2),
+.comparison-table thead tr th:nth-child(2),
+.comparison-table tbody tr td:nth-child(2) {
+  width: 15%; /* Eskiden 20% idi, daraltıldı */
+}
+
+.hardware-table thead tr th:nth-child(3),
+.hardware-table tbody tr td:nth-child(3),
+.comparison-table thead tr th:nth-child(3),
+.comparison-table tbody tr td:nth-child(3) {
+  width: 25%; /* Orta kolon */
+}
+
+.hardware-table thead tr th:nth-child(4),
+.hardware-table tbody tr td:nth-child(4),
+.comparison-table thead tr th:nth-child(4),
+.comparison-table tbody tr td:nth-child(4) {
+  width: 25%; /* Orta kolon */
+}
+
+.hardware-table thead tr th:nth-child(5),
+.hardware-table tbody tr td:nth-child(5),
+.comparison-table thead tr th:nth-child(5),
+.comparison-table tbody tr td:nth-child(5) {
+  width: 20%; /* Eskiden 10-15% idi, genişletildi */
+}
+
+/* ==================== 5+ SÜTUNLU TABLOLAR (Karşılaştırma Grid) ==================== */
+
+/* Comparison grid'de feature-name kolonları hep aynı genişlikte */
+.comparison-grid .feature-name {
+  min-width: 180px; /* İlk tablonun ilk kolonuyla uyumlu */
+}
+
+/* ==================== MOBİL RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  /* Mobilde tüm kolonlar esnek olsun */
+  .hardware-table th:nth-child(1),
+  .hardware-table td:nth-child(1),
+  .comparison-table th:nth-child(1),
+  .comparison-table td:nth-child(1) {
+    white-space: normal; /* Mobilde satır kaydırmaya izin ver */
+    min-width: 100px;
+  }
+
+  /* 5 sütunlu tablolarda mobilde kolonlar eşit dağılsın */
+  .hardware-table thead tr th,
+  .hardware-table tbody tr td,
+  .comparison-table thead tr th,
+  .comparison-table tbody tr td {
+    width: auto;
+  }
+}
+
+/* ==================== ÖZEL: EN 54 SERİSİ TABLOSU (4 SÜTUN, ÖZEL DAĞILIM) ==================== */
+
+/* EN 54 tablosu için özel kural: 4. kolon dar, 2-3. kolonlar geniş */
+.hardware-table.standards-table th:nth-child(2),
+.hardware-table.standards-table td:nth-child(2) {
+  width: 35%; /* Kapsam kolonu geniş (uzun açıklamalar) */
+}
+
+.hardware-table.standards-table th:nth-child(3),
+.hardware-table.standards-table td:nth-child(3) {
+  width: 35%; /* Temel Gereksinimler kolonu geniş */
+}
+
+.hardware-table.standards-table th:nth-child(4),
+.hardware-table.standards-table td:nth-child(4) {
+  width: 15%; /* Zorunlu mu kolonu dar (sadece ✔ veya text) */
+  text-align: center; /* Ortala */
+}
+
+/* ==================== ÖZEL: PANEL KARŞILAŞTIRMA TABLOSU (5 SÜTUN) ==================== */
+
+/* Panel Tipleri Teknik Karşılaştırma: 1. kolon standart, 2-5. kolonlar eşit */
+
+/* comparison-grid yapısı için */
+.comparison-grid.panel-comparison-grid {
+  grid-template-columns: 15% repeat(4, 21.25%);
+}
+
+/* Normal tablo yapısı için */
+.comparison-table.panel-comparison th:nth-child(1),
+.comparison-table.panel-comparison td:nth-child(1) {
+  width: 15%; /* Teknik Parametre kolonu */
+}
+
+.comparison-table.panel-comparison th:nth-child(2),
+.comparison-table.panel-comparison td:nth-child(2),
+.comparison-table.panel-comparison th:nth-child(3),
+.comparison-table.panel-comparison td:nth-child(3),
+.comparison-table.panel-comparison th:nth-child(4),
+.comparison-table.panel-comparison td:nth-child(4),
+.comparison-table.panel-comparison th:nth-child(5),
+.comparison-table.panel-comparison td:nth-child(5) {
+  width: 21.25%; /* (100-15) / 4 = 21.25% her panel için eşit */
+}
+
 /* End of style.css */
